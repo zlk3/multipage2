@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comedy Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="comedy-home">
+  <div class="text-block" style="text-align: center; margin-top: 2rem;">
+    <h1>Comedy Home</h1>
+    <p><a href="index.html" class="button">Back to Home</a></p>
+    <!-- Added five comedy category buttons -->
+    <div class="button-box" style="text-align: center; margin-top: 1rem;">
+  <a href="SupportActressComedy.html" class="button sparkle" aria-label="Go to Supporting Actress page">Supporting Actress</a>
+  <a href="SupportActorComedy.html" class="button sparkle" aria-label="Go to Supporting Actor page">Supporting Actor</a>
+  <a href="LeadActressComedy.html" class="button sparkle" aria-label="Go to Lead Actress page">Lead Actress</a>
+  <a href="LeadActorComedy.html" class="button sparkle" aria-label="Go to Lead Actor page">Lead Actor</a>
+      <a href="BestComedy.html" class="button sparkle" aria-label="Go to Best Comedy page">Best Show</a>
+    </div>
+
+
+<div class="polaroid-container" style="text-align: center; margin-top: 2rem;">
+      <div class="polaroid">
+        <img src="pgrid40.jpg" alt="Comedy collage" style="width:150%"
+
+      </div>
+  </div>
+  <script>
+document.addEventListener('DOMContentLoaded', function(){
+  const buttons = document.querySelectorAll('.comedy-home .button');
+  buttons.forEach(btn => {
+    // only for link buttons
+    if (btn.tagName.toLowerCase() !== 'a') return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      // add sparkle class to trigger animation
+      this.classList.add('sparkle');
+      // wait for animation to end (use animationend) or fallback timeout
+      const onEnd = () => {
+        this.classList.remove('sparkle');
+        window.location.href = href;
+      };
+      this.addEventListener('animationend', onEnd, { once: true });
+      // fallback in case animationend doesn't fire
+      setTimeout(onEnd, 1800);
+    });
+  });
+});
+</script>
+</body>
+</html>
